@@ -1,4 +1,5 @@
 # infinite_iframe
+İletişim için https://discord.gg/amerika ve 0s86
 
 ![image](https://github.com/user-attachments/assets/34da1dce-3e25-4e2a-ac89-3a058c210cea)
 
