@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kick İframe Açıcı</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f0f2f5;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+        .iframe-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 10px;
+            width: 90%;
+            max-width: 1200px;
+        }
+        iframe {
+            width: 100%;
+            aspect-ratio: 16/9;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            transition: box-shadow 0.3s;
+        }
+        .dark-mode {
+            background-color: #1e1e1e;
+            color: #f0f2f5;
+        }
+        .dark-mode iframe {
+            box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+        }
+        .toggle-button {
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        .dark-mode .toggle-button {
+            background-color: #444;
+            color: #fff;
+        }
+        .footer {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #777;
+            text-align: center;
+        }
+        .footer a {
+            color: #007bff;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        .footer a:hover {
+            color: #0056b3;
+        }
+        .dark-mode .footer {
+            color: #aaa;
+        }
+        .dark-mode .footer a {
+            color: #aaa;
+        }
+        .dark-mode .footer a:hover {
+            color: #ccc;
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Kick İframe Açıcı</h1>
+    <button class="toggle-button" onclick="toggleDarkMode()">Karanlık Mod</button>
+    <div class="iframe-container" id="iframeContainer"></div>
+    <div class="footer">
+        <p>Developed by <a href="https://github.com/fatihsko" target="_blank">plut0</a></p>
+        <p>Bize ulaşmak için <a href="https://discord.gg/amerika" target="_blank">discord.gg/amerika</a></p>
+    </div>
+
+    <script>
+        const iframeContainer = document.getElementById('iframeContainer');
+        const videoUrl = "https://player.kick.com/igfatihskoo"; // Kick embed linki
+        const count = 30; // Açılacak iframe sayısını sınırla
+
+        function loadIframe(index) {
+            return new Promise((resolve, reject) => {
+                const iframe = document.createElement('iframe');
+                iframe.src = videoUrl;
+                iframe.onload = () => resolve(`Iframe ${index + 1} loaded`);
+                iframe.onerror = () => reject(`Iframe ${index + 1} failed to load`);
+                iframeContainer.appendChild(iframe);
+            });
+        }
+
+        async function loadIframes() {
+            for (let i = 0; i < count; i++) {
+                try {
+                    const message = await loadIframe(i);
+                    console.log(message);
+                } catch (error) {
+                    console.error(error);
+                }
+            }
+        }
+
+        function toggleDarkMode() {
+            document.body.classList.toggle('dark-mode');
+        }
+
+        loadIframes();
+    </script>
+</body>
+</html>
