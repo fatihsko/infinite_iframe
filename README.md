@@ -42,5 +42,10 @@ Kısacası hepsini neredeyse minimuma indiriyoruz ve localhostu opera gx üzerin
 Kick, twitch vb platformlarda yayının embed linkini kopyalayıp, kodu duzenleyip bir sunucu veya localhostunuzda çalıştırarak yapay izlenme oluşturabileceğiniz bir kod.
 
 
+Test olarak dandik bir makine ile denerken bile 113 kişiye ulaşabilmiştik.
+
+![image](https://github.com/user-attachments/assets/ee6f3c9d-c635-4170-afaf-f4ec119b4e32)
+
+
 
 
